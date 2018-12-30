@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 
 const connMySQL = () =>{
-    console.log('A Conexão com o banco de dados foi estabelecida');
+    
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',

@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-	<html lang="pt-br">
-		<head>
-			<meta charset="utf-8"/>
-			<title>Formulário de cadastro de Notícia</title>
-		</head>
-	<body>
+<html lang="en">
 
-		<h1>Adicionar notícia</h1>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<title>Formulário Inclusão Notícia</title>
+</head>
 
-	</body>
+<body>
+
+	<div class="container">
+			<h1>Adicionar Notícia</h1>
+		<div class="row">			
+			
+			<form action="/noticias/salvar" class="form" method="post">
+
+				<div class="form-group">
+				  <label for="titulo">Título</label>
+				  <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Título da Notícia">
+				
+				</div>
+
+				<div class="form-group">
+				  <label for="noticia">Notícia</label>
+				  <textarea class="form-control" name="noticia" id="" rows="5" cols="30"></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Enviar</button>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+
 </html>

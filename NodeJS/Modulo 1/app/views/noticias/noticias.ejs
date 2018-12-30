@@ -13,19 +13,30 @@
 	<div class="container">
 		<div class="row">
 			<h1>Notícias</h1>
+		</div>
+
+		<div class="row">
+			<a class="btn btn-primary" href="/formulario_inclusao_noticia" role="button">Nova</a>
+		</div>
+		
+		<div class="row">
 
 			<table class="table">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Título</th>						
+						<th>Título</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% for(var i=0; i < noticias.length; i++) { %>
 					<tr>
-						<td scope="row"><%= noticias[i].id_noticia %></td>
-						<td><%= noticias[i].titulo %></td>						
+						<td scope="row">
+							<%= noticias[i].id_noticia %>
+						</td>
+						<td>
+							<%= noticias[i].titulo %>
+						</td>
 					</tr>
 					<% } %>
 				</tbody>
