@@ -1,23 +1,10 @@
-//Utiliza o Framework Express
-const express = require('express');
-//Carrega o servidor Express dentro da constante app
-const app = express();
+const app = require('./config/server');
 
-//Seta a Engine servidora de Views
-app.set('view engine', 'ejs');
+var rotaHome = require('./app/routes/home')(app);
 
-//Rotas
-app.get('/', (req, res) => {
-    res.render("home/index");
-});
+var rotaNoticias = require('./app/routes/noticias')(app);
 
-app.get('/formulario_inclusao_noticia', (req, res) => {
-    res.render("admin/form_add_noticia");
-});
-
-app.get('/noticias', (req, res) => {
-    res.render("noticias/noticias");
-});
+var rotaInclusaoNoticia = require('./app/routes/formulario_inclusao_noticia')(app);
 
 //Iniciando servidor na porta 3000 com mensagem de calback
 app.listen(3000, () => {
