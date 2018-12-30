@@ -18,16 +18,14 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Título</th>
-						<th>Notícia</th>
+						<th>Título</th>						
 					</tr>
 				</thead>
 				<tbody>
 					<% for(var i=0; i < noticias.length; i++) { %>
 					<tr>
 						<td scope="row"><%= noticias[i].id_noticia %></td>
-						<td><%= noticias[i].titulo %></td>
-						<td><%= noticias[i].noticia %></td>
+						<td><%= noticias[i].titulo %></td>						
 					</tr>
 					<% } %>
 				</tbody>
