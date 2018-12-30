@@ -7,6 +7,9 @@ const consign = require('consign');
 //Responsável por receber requisições via post e tratar
 const bodyParser = require('body-parser');
 
+//Responsável por validar as requisições
+const expressValidator = require('express-validator');
+
 //Carrega o servidor Express dentro da constante app
 const app = express();
 
@@ -18,6 +21,8 @@ app.set('views', './app/views');
 
 //usa o bodyParser e converte as requisições em tratativas jSon
 app.use(bodyParser.urlencoded({extended: true}));
+//usa o expressValidator para validar as requisições do tipo post
+app.use(expressValidator());
 
 /*Dá o include da pasta routes e configuração do banco de dados
  e inclui dentro do servidor
