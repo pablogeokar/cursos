@@ -1,5 +1,13 @@
 module.exports = (app) => {
+
     app.get('/noticias', (req, res) => {
-        res.render("noticias/noticias");
+
+        var connection = app.config.dbConnection();       
+
+        connection.query('select * from noticias', (erro, resultado) => {
+            res.render("noticias/noticias", { noticias: resultado });
+        });
+
     });
+
 }

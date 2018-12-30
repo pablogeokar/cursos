@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-	<html lang="pt-br">
-		<head>
-			<meta charset="utf-8"/>
-			<title>Notícias</title>
-		</head>
-	<body>
+<html lang="en">
 
-		<h1>Notícias</h1>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<title>Notícias</title>
+</head>
 
-	</body>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Notícias</h1>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Título</th>
+						<th>Notícia</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i=0; i < noticias.length; i++) { %>
+					<tr>
+						<td scope="row"><%= noticias[i].id_noticia %></td>
+						<td><%= noticias[i].titulo %></td>
+						<td><%= noticias[i].noticia %></td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+
 </html>
