@@ -19,8 +19,11 @@ app.set('view engine', 'ejs');
 //Seta o diretório das Views
 app.set('views', './app/views');
 
+app.use(express.static('./app/public'));
+
 //usa o bodyParser e converte as requisições em tratativas jSon
 app.use(bodyParser.urlencoded({extended: true}));
+
 //usa o expressValidator para validar as requisições do tipo post
 app.use(expressValidator());
 

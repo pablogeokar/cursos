@@ -12,6 +12,7 @@ module.exports.noticias_salvar = (application, req, res) => {
     req.assert('autor', 'Autor é Obrigatório').notEmpty();
     req.assert('data_noticia', 'Data é Obrigatória').notEmpty();
     //req.assert('data_noticia', 'Data é Obrigatória').isDate({format: 'yyyy-mm-dd'});
+    req.assert('data_noticia', 'Data Inválida').isISO8601();
     req.assert('noticia', 'Notícia é Obrigatória').notEmpty();
 
     var erros = req.validationErrors();

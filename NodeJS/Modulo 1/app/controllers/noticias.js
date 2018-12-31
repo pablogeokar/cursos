@@ -9,9 +9,10 @@ module.exports.noticias = (application, req, res) => {
 
 module.exports.noticia = (application, req, res) => {
     var connection = application.config.dbConnection();
-    var noticiasModel = new application.app.models.NoticiasDAO(connection);
+    var noticiasModel = new application.app.models.NoticiasDAO(connection); 
+    var id_noticia = req.query; 
 
-    noticiasModel.getNoticia((erro, resultado) => {
+    noticiasModel.getNoticia(id_noticia,(erro, resultado) => {
         res.render("noticias/noticia", { noticia: resultado });
     });
 }
