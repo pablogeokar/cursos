@@ -40,6 +40,9 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/">HOME</a></li>
 				</ul>
+				<ul class="nav navbar-nav navbar-left">
+					<li><a href="/formulario_inclusao_noticia">Nova Notícia</a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -47,21 +50,62 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-8">
 				<div class="noticia_wrapper">
 					<span class="noticia_autor">Por
-						<%=noticia[0].autor%></span>
-					<a href="noticia/1" class="noticia_titulo">
-						<%=noticia[0].titulo%></a>
+						<%= noticias[0].autor%></span>
+					<a href="noticia?id_noticia=<%= noticias[0].id_noticia%>" class="noticia_titulo">
+						<%= noticias[0].titulo%></a>
 					<span class="noticia_data">
-						<%=noticia[0].data_noticia%></span>
+						<%= noticias[0].data_noticia%></span>
 					<br />
 					<p class="noticia_resumo">
-						<%=noticia[0].noticia%>
+						<%= noticias[0].resumo%>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="noticia_wrapper">
+					<span class="noticia_autor">Por
+						<%= noticias[1].autor%></span>
+					<a href="noticia?id_noticia=<%= noticias[1].id_noticia%>" class="noticia_titulo">
+						<%= noticias[1].titulo%></a>
+					<span class="noticia_data">
+						<%= noticias[1].data_noticia%></span>
+
+					<br />
+					<p class="noticia_resumo">
+						<%= noticias[1].resumo%>
 					</p>
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<% for(var i =2; i < noticias.length; i++) { %>
+			<div class="col-md-4">
+				<div class="noticia_wrapper">
+					<span class="noticia_autor">Por
+						<%= noticias[i].autor%></span>
+					<a href="noticia?id_noticia=<%= noticias[i].id_noticia%>" class="noticia_titulo">
+						<%= noticias[i].titulo%></a>
+					<span class="noticia_data">
+						<%= noticias[i].data_noticia%></span>
+					<br />
+					<p class="noticia_resumo">
+						<%= noticias[i].resumo%>
+					</p>
+				</div>
+			</div>
+			<%  } %>
+
+		</div>
+
+		<div class="row ver_mais">
+			<button type="button" class="btn btn-default"><a href="noticias.html">Ver todas as notícias</a></button>
+		</div>
+
 	</div>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
