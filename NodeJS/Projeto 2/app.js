@@ -33,9 +33,3 @@ io.on('connection', (socket) => {
     });
 
 });
-/**
- * <span class="participante">
-                    <img src="images/ico_usuario.png" />
-                    Jorge
-                </span>
- */
