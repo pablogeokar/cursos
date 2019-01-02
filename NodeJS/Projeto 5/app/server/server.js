@@ -4,6 +4,12 @@ const config = require('../../config/config');
 /* importar o módulo do framework express */
 const express = require('express');
 
+/** 
+ * importar o módulo helmet (responsável por 
+ * fornecer uma camada extra de sgurança ao express.js) 
+ * */
+const helmet = require('helmet');
+
 /* importar o módulo do consign */
 const consign = require('consign');
 
@@ -23,6 +29,9 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
+/** utiliza o helmet para fornecer uma camada extra de segurança no servidor */
+app.use(helmet());
+
 /* configurar o middleware express.static */
 app.use(express.static('./app/public'));
 
@@ -41,7 +50,9 @@ app.use(expressSession({
 
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
 consign()
-	.include('app/routes')	
+	.include('app/routes')
+	.then('./config/config.js')
+	.then('./app/server/dbConnection.js')
 	.then('app/models')
 	.then('app/controllers')
 	.into(app);

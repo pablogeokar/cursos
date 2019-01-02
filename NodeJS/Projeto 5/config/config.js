@@ -2,11 +2,16 @@
 let config = {};
 config.db = {};
 config.session = {};
+config.server ={};
 
 /*****************************************/
-/** CONFIGURAÇÕES BANCO DE DADOS MONGODB */
+/**  CONFIGURAÇÕES BANCO DE DADOS MONGODB*/
 config.db.host = 'localhost:27017';
 config.db.name = 'got';
+
+/*****************************************/
+/**  CONFIGURAÇÕES DO SERVIDOR WEB       */
+config.server.porta = 80;
 
 /*****************************************/
 /** OUTRAS CONFIGURAÇÕES */

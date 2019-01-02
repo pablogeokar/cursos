@@ -1,10 +1,16 @@
+/**Exemplo chamando o require direto */
 const dbConnection = require('./app/server/dbConnection');
 
 dbConnection.then(
     () =>{
-        console.log('conectou com sucesso')        ;
+        console.log('conectou ao banco com sucesso')        ;
     },
     err => {
-        console.log('errou')
+        console.log('Problemas ao conectar com o banco')
     }
 );
+
+//Exemplo usando consign
+$.app.server.dbConnection.then( () =>{
+    console.log('Conectou');
+});
