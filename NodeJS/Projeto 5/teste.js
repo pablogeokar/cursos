@@ -10,7 +10,14 @@ dbConnection.then(
     }
 );
 
+/*
 //Exemplo usando consign
 $.app.server.dbConnection.then( () =>{
     console.log('Conectou');
 });
+
+//Exemplo atribuindo o connectiona uma variável
+var connection = $.app.server.dbConnection;
+    connection.then(console.log('conectou com sucesso'));
+
+*/

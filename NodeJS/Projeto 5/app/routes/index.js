@@ -1,6 +1,6 @@
 module.exports = ($) => {
 
-	$.get('/', function (req, res) {
+	$.get('/', (req, res) => {
 		$.app.controllers.index.index($, req, res);
 	});
 

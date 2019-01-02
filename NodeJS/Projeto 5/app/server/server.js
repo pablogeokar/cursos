@@ -1,29 +1,28 @@
 /** importa as variáveis de configuração */
-const config = require('../../config/config');
+const config = require('../../config/config'),
 
 /* importar o módulo do framework express */
-const express = require('express');
-
+express = require('express'),
 /** 
  * importar o módulo helmet (responsável por 
  * fornecer uma camada extra de sgurança ao express.js) 
  * */
-const helmet = require('helmet');
+helmet = require('helmet'),
 
 /* importar o módulo do consign */
-const consign = require('consign');
+consign = require('consign'),
 
 /* importar o módulo do body-parser */
-const bodyParser = require('body-parser');
+bodyParser = require('body-parser'),
 
 /* importar o módulo do express-validator */
-const expressValidator = require('express-validator');
+expressValidator = require('express-validator'),
 
 /** importar o módulo do express-session */
-const expressSession = require('express-session');
+expressSession = require('express-session'),
 
 /* iniciar o objeto do express */
-const app = express();
+app = express();
 
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
