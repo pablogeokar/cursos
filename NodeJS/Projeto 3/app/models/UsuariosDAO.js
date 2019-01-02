@@ -18,7 +18,7 @@ UsuariosDAO.prototype.autenticar = function (usuario, req, res) {
 	var dados = {
 		operacao: "pesquisar",
 		usuario: usuario,
-		collection: "usuarios",
+		collection: "usuarios",		
 	};
 	this._connection(dados, req, res);	
 

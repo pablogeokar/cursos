@@ -48,7 +48,7 @@ function query(db, dados, req, res) {
                 if (result[0] != undefined) {
                   req.session.autorizado = true; //nome da sessão aqui chamada de autorizado (poderia ser qualquer nome)
                   req.session.usuario = result[0].usuario;
-                  req.session.casa = result[0].usuario;
+                  req.session.casa = result[0].casa;
 
                 }
 

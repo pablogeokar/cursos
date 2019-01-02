@@ -21,6 +21,5 @@ module.exports.autenticar = (application, req, res) => {
     var UsuariosDAO = new application.app.models.UsuariosDAO(connection);
     
     UsuariosDAO.autenticar(dadosForm, req, res);    
-
-    //res.send('pode gravar sessão')
+    
 }
