@@ -53,8 +53,7 @@ app.use(expressSession({
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
 consign()
 	.include('app/routes')
-	.then('./config/config.js')
-	.then('./app/server/dbConnection.js')
+	.then('./config/config.js')	
 	.then('app/models')
 	.then('app/controllers')
 	.into(app);
@@ -64,9 +63,9 @@ let uri = `mongodb://${config.db.host}/${config.db.name}`;
 
 mongoose.connect(uri, { useNewUrlParser: true }, (err, res) => {
 	if (err) {
-		console.log('ERROR connecting to: ' + uri + '. ' + err);
+		console.log('ERRO ao conectar o banco de dados na url: ' + uri + '. ' + err);
 	} else {
-		console.log('Successfully connected to: ' + uri);
+		console.log('Banco de Dados conectado com sucesso na url: ' + uri);
 	}
 });
 mongoose.Promise = global.Promise

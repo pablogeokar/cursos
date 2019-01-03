@@ -7,5 +7,5 @@ let porta = app.config.config.server.porta;
 
 /* parametrizar a porta de escuta */
 app.listen(porta, function () {
-	console.log('Servidor iniciado com sucesso na porta ' + porta);
+	console.log('Servidor WEB iniciado com sucesso na porta: ' + porta);
 });
