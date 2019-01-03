@@ -1,0 +1,30 @@
+{
+  "name": "app-servidor",
+  "version": "1.0.0",
+  "description": "Servidor nodejs com express, mongodb empacotado com webpack e babel",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "nodemon ./dist/app.js",
+    "dev": "webpack --mode development --watch",    
+    "build": "webpack --mode production --watch"
+  },
+  "keywords": [
+    "nodeJs",
+    "expressJS",
+    "mongoDb",
+    "mongoose",
+    "webpack",
+    "4",
+    "babel"
+  ],
+  "author": "Pablo George <pablogeokar@hotmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.4",
+    "nodemon": "^1.18.9",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0"
+  }
+}
