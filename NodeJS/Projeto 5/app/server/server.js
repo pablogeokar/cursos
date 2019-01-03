@@ -1,6 +1,7 @@
 /** importa as variáveis de configuração */
 const config = require('../../config/config'),
 
+
 /* importar o módulo do framework express */
 express = require('express'),
 /** 
@@ -51,7 +52,7 @@ app.use(expressSession({
 consign()
 	.include('app/routes')
 	.then('./config/config.js')
-	.then('./app/server/dbConnection.js')
+	.then('./app/server/dbConnection.js')	
 	.then('app/models')
 	.then('app/controllers')
 	.into(app);

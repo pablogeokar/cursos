@@ -1,13 +1,25 @@
-function usuarios (connection){
-    this._connection = connection;
-}
+const config = require('../../config/config');
+const mongoose = require('mongoose')
 
-usuarios.prototype.consulta = () => {
-    //var Schema = $.app.server.dbConnection;
-    console.log(this._connection);
-    //console.log(Schema);
-}
+let uri = `mongodb://${config.db.host}/${config.db.name}`;
 
-module.exports = () => {
-    return usuarios;
+mongoose.connect(uri, {useNewUrlParser: true});
+mongoose.Promise = global.Promise
+
+
+var Schema = new mongoose.Schema({
+    nome: String,
+    senha: String,
+    usuario: String,
+    casa: String
+})
+
+/*
+try {
+    Schema = mongoose.model('usuarios', usuarios);
+} catch (e) {
+    Schema = mongoose.model('usuarios');
 }
+*/
+var model = mongoose.model('usuarios', Schema);
+module.exports = {model}
