@@ -1,8 +1,12 @@
 module.exports.index = ($, req, res) => {
-    
-    var usuarios = $.app.models.usuarios;
-    console.log(usuarios);
 
-    res.render('index');
-    
+
+    var usuarios = $.app.models.usuarios;
+
+    usuarios.model.find({}, (err, result) => {         
+        res.render('index', {usuarios: result});
+    });
+
+
 }
+

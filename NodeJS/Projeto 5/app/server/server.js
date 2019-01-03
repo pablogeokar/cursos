@@ -1,29 +1,31 @@
 /** importa as variáveis de configuração */
 const config = require('../../config/config'),
 
+	/* importar o módulo do framework express */
+	express = require('express'),
+	/** 
+	 * importar o módulo helmet (responsável por 
+	 * fornecer uma camada extra de sgurança ao express.js) 
+	 * */
+	helmet = require('helmet'),
 
-/* importar o módulo do framework express */
-express = require('express'),
-/** 
- * importar o módulo helmet (responsável por 
- * fornecer uma camada extra de sgurança ao express.js) 
- * */
-helmet = require('helmet'),
+	/* importar o módulo do consign */
+	consign = require('consign'),
 
-/* importar o módulo do consign */
-consign = require('consign'),
+	/* importar o módulo do body-parser */
+	bodyParser = require('body-parser'),
 
-/* importar o módulo do body-parser */
-bodyParser = require('body-parser'),
+	/* importar o módulo do express-validator */
+	expressValidator = require('express-validator'),
 
-/* importar o módulo do express-validator */
-expressValidator = require('express-validator'),
+	/** importar o módulo do express-session */
+	expressSession = require('express-session'),
 
-/** importar o módulo do express-session */
-expressSession = require('express-session'),
+	/** importa o módulo de conexão ao banco de dados mongodb */
+	mongoose = require('mongoose'),
 
-/* iniciar o objeto do express */
-app = express();
+	/* iniciar o objeto do express */
+	app = express();
 
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
@@ -36,7 +38,7 @@ app.use(helmet());
 app.use(express.static('./app/public'));
 
 /* configurar o middleware body-parser */
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /* configurar o middleware express-validator */
 app.use(expressValidator());
@@ -52,10 +54,23 @@ app.use(expressSession({
 consign()
 	.include('app/routes')
 	.then('./config/config.js')
-	.then('./app/server/dbConnection.js')	
+	.then('./app/server/dbConnection.js')
 	.then('app/models')
 	.then('app/controllers')
 	.into(app);
+
+/*** CONECTA AO BANCO DE DADOS MONGODB*/	
+let uri = `mongodb://${config.db.host}/${config.db.name}`;
+
+mongoose.connect(uri, { useNewUrlParser: true }, (err, res) => {
+	if (err) {
+		console.log('ERROR connecting to: ' + uri + '. ' + err);
+	} else {
+		console.log('Successfully connected to: ' + uri);
+	}
+});
+mongoose.Promise = global.Promise
+
 
 /* exportar o objeto app */
 module.exports = app;
