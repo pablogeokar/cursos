@@ -1,9 +1,9 @@
 module.exports.cadastro = ($, req, res) => {
     /** chama a view de cadastro com o objeto validacao e dadosForm nulos */
-    res.render('cadastro',{validacao: {},dadosForm:{}})
+    res.render('cadastro', { validacao: {}, dadosForm: {} })
 }
 
-module.exports.cadastrar = ($, req, res) => {    
+module.exports.cadastrar = ($, req, res) => {
     var dadosForm = req.body
 
     /** inicio Validação dos Dados */
@@ -14,11 +14,27 @@ module.exports.cadastrar = ($, req, res) => {
 
     var erros = req.validationErrors()
 
-    if(erros) {
-        res.render('cadastro', {validacao: erros, dadosForm: dadosForm})
+    if (erros) {
+        res.render('cadastro', { validacao: erros, dadosForm: dadosForm })
         return
     }
     /** fim Validação dos Dados */
 
-    res.send(dadosForm)
+    /** Grava o usuário no banco de dados e redireciona para a rota principal*/
+    /*
+    var usuarios = $.app.models.usuarios
+    usuarios.model.create(dadosForm, function (err, small) {
+        if (err) return res.send('Problemas ao Cadastrar')
+        res.redirect('/')
+      });
+      */
+
+    var usuarios = $.app.models.usuarios.inserir(dadosForm)
+
+    usuarios.then((err, res) => {
+        if (err) res.send('Ocorreram erros ao cadastrar')
+        res.redirect('/')
+    })
+
+
 }
