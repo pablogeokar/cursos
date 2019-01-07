@@ -21,19 +21,11 @@ module.exports.cadastrar = ($, req, res) => {
     /** fim Validação dos Dados */
 
     /** Grava o usuário no banco de dados e redireciona para a rota principal*/
-    /*
-    var usuarios = $.app.models.usuarios
-    usuarios.model.create(dadosForm, function (err, small) {
-        if (err) return res.send('Problemas ao Cadastrar')
-        res.redirect('/')
-      });
-      */
-
     var usuarios = $.app.models.usuarios.inserir(dadosForm)
-
-    usuarios.then((err, res) => {
-        if (err) res.send('Ocorreram erros ao cadastrar')
+    usuarios.then(() => {
         res.redirect('/')
+    }).catch(() => {
+        res.send('Ocorreram erros ao cadastrar')
     })
 
 
