@@ -4,8 +4,8 @@ var Schema = new mongoose.Schema({
     nome: { type: String, required: true },
     senha: { type: String, required: true },
     usuario: { type: String, required: true },
-    casa: { type: String, required: true }    
-}, {versionKey: false });
+    casa: { type: String, required: true }   
+}, {versionKey: false })
 
 var model = mongoose.model('usuarios', Schema)
 
@@ -14,6 +14,10 @@ var model = mongoose.model('usuarios', Schema)
  */
 module.exports.inserir = (dados) =>{
     
-   return model.create(dados);
+   return model.create(dados)
 
+}
+
+module.exports.autenticar = (dados) => {
+    return model.find(dados)
 }
