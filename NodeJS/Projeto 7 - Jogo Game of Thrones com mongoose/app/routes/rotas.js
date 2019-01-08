@@ -32,5 +32,18 @@ module.exports = ($) => {
 		$.app.controllers.jogo.sair($, req, res)
 	})
 
+	$.get('/suditos', (req, res) => {	
+		$.app.controllers.jogo.suditos($, req, res)
+	})
+
+	$.get('/pergaminhos', (req, res) => {	
+		$.app.controllers.jogo.pergaminhos($, req, res)
+	})
+
+	$.post('/ordenar_acao_sudito', (req, res) => {	
+		$.app.controllers.jogo.ordenar_acao_sudito($, req, res)
+	})
+
+	
 
 }
