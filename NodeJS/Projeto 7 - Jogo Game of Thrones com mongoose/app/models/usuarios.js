@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 var UsuariosSchema = new mongoose.Schema({
     nome: { type: String, required: true },
-    senha: { type: String, required: true },
+    senha: { type: String, required: true, select: false },
     usuario: { type: String, required: true },
     casa: { type: String, required: true }   
 }, {versionKey: false })

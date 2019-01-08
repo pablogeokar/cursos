@@ -25,3 +25,9 @@ module.exports.gerarParametros = (usuario) =>{
     })
  
  }
+
+ module.exports.iniciaJogo = (usuario) =>{
+    
+    return Jogo.find({usuario: usuario})
+ 
+ }
