@@ -5,8 +5,7 @@ module.exports.jogo = ($, req, res) => {
     } else {
         res.redirect('/')
     }
-
-
+    
 }
 
 module.exports.sair = ($, req, res) => {

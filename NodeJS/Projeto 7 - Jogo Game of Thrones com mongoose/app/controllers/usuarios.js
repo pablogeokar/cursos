@@ -22,9 +22,13 @@ module.exports.cadastrar = ($, req, res) => {
 
     /** Grava o usuário no banco de dados e redireciona para a rota principal*/
     var usuarios = $.app.models.usuarios.inserir(dadosForm)
-
-    usuarios
-        .then(() => {
+    
+    usuarios        
+        .then(() => {           
+                //gera os parâmetros do usuário
+                $.app.models.jogo.gerarParametros(dadosForm.usuario);
+                
+            //redireciona para fazer o login
             res.redirect('/')
         })
         .catch(() => {
