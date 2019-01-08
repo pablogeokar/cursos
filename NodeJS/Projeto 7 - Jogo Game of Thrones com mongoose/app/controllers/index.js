@@ -1,6 +1,12 @@
 module.exports.index = ($, req, res) => {
 
-    res.render('index',{validacao:{}})
+    if (req.session.autorizado) {
+        res.redirect('/jogo')
+    } else {
+        res.render('index',{validacao:{}})
+    }
+
+    
 
     /*
 

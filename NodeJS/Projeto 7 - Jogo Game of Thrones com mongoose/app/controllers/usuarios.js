@@ -50,13 +50,14 @@ module.exports.autenticar = ($, req, res) => {
 
     var usuarios = $.app.models.usuarios.autenticar(dadosForm)
     usuarios.then((result) => {
-        
-        req.session.autorizado = true
-        req.session.usuario = result[0].usuario
-        req.session.casa = result[0].casa        
 
-        if (req.session.autorizado) {
+        if (result[0] != undefined) {
+
+            req.session.autorizado = true
+            req.session.usuario = result[0].usuario
+            req.session.casa = result[0].casa
             res.redirect('/jogo')
+
         } else {
             res.redirect('/')
         }

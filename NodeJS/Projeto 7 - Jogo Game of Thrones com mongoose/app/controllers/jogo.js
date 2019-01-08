@@ -11,9 +11,9 @@ module.exports.jogo = ($, req, res) => {
 
 module.exports.sair = ($, req, res) => {
 
-    req.session.destroy()
-    res.redirect('/')
-
+    req.session.destroy((err) => {
+        res.redirect('/')
+    })
 
 }
 
