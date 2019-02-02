@@ -30,9 +30,15 @@
 
 	<div class="container">
 
-		<% if(comando_invalido == 'S'){%>
-			<div class="alert alert-danger" id="msg_erros">
+		<% if(msg == 'A'){%>
+			<div class="alert alert-danger" id="msg">
 				<strong>Operação Inválida, verifique se todos os campos foram informados</strong>
+			</div>
+		<% }%>
+
+		<% if(msg == 'B'){%>
+			<div class="alert alert-success" id="msg">
+				<strong>Ação realizada com sucesso</strong>
 			</div>
 		<% }%>
 
@@ -108,7 +114,7 @@
 		$(document).ready(() => {
 
 			$('#btn_suditos').on('click', () => {
-				$('#msg_erros').hide()
+				$('#msg').hide()
 				$.ajax({
 					url: '/suditos',
 					method: 'get',
@@ -119,7 +125,7 @@
 			})
 
 			$('#btn_pergaminhos').on('click', () => {
-				$('#msg_erros').hide()
+				$('#msg').hide()
 				$.ajax({
 					url: '/pergaminhos',
 					method: 'get',

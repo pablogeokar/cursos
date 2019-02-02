@@ -22,10 +22,13 @@ const config = require('../../config/config'),
 	expressSession = require('express-session'),
 
 	/** importa o módulo de conexão ao banco de dados mongodb */
-	mongoose = require('mongoose'),
+	mongoose = require('mongoose'),	
 
 	/* iniciar o objeto do express */
 	app = express();
+
+/** desabilita a pluralização dos nomes daas collections */
+mongoose.pluralize(null)
 
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs')

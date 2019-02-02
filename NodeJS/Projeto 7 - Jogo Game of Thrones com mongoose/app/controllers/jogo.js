@@ -5,16 +5,16 @@ module.exports.jogo = ($, req, res) => {
         return
     }
 
-    var comando_invalido = 'N'
-    if (req.query.comando_invalido == 'S') {
-        comando_invalido = 'S'
+    var msg = ''
+    if (req.query.msg !== '') {
+        msg = req.query.msg
     }
 
     var usuario = req.session.usuario
     var Jogo = $.app.models.jogo.iniciaJogo(usuario)
     Jogo
         .then((result) => {
-            res.render('jogo', { img_casa: req.session.casa, jogo: result[0], comando_invalido: comando_invalido })
+            res.render('jogo', { img_casa: req.session.casa, jogo: result[0], msg: msg })
         })
         .catch(() => {
             res.send('Ocorreram erros ao iniciar o jogo')
@@ -28,7 +28,7 @@ module.exports.sair = ($, req, res) => {
 }
 
 module.exports.suditos = ($, req, res) => {
-    
+
     if (req.session.autorizado !== true) {
         res.redirect('/')
         return
@@ -37,16 +37,24 @@ module.exports.suditos = ($, req, res) => {
 }
 
 module.exports.pergaminhos = ($, req, res) => {
-    
+
     if (req.session.autorizado !== true) {
         res.redirect('/')
         return
     }
-    res.render('pergaminhos', { validacao: {} })
+
+    var Acao = $.app.models.jogo.listar_acao(req.session.usuario)
+    Acao.then(result => {
+        res.render('pergaminhos', { acoes: result })
+    }).catch(() => {
+        res.redirect('/jogo?msg=A')
+        return
+    })
+   
 }
 
 module.exports.ordenar_acao_sudito = ($, req, res) => {
-    
+
     if (req.session.autorizado !== true) {
         res.redirect('/')
         return
@@ -60,11 +68,15 @@ module.exports.ordenar_acao_sudito = ($, req, res) => {
     var erros = req.validationErrors()
 
     if (erros) {
-        res.redirect('/jogo?comando_invalido=S')
+        res.redirect('/jogo?msg=A')
         return
     }
 
-    console.log(dadosForm)
-    res.send('tudo ok')
+    dadosForm.usuario = req.session.usuario
+    var Acao = $.app.models.jogo.acao(dadosForm)
+    Acao
+        .then((result) => {
+            res.redirect('/jogo?msg=B')
+        })
 
 }
