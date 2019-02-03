@@ -80,3 +80,13 @@ module.exports.ordenar_acao_sudito = ($, req, res) => {
         })
 
 }
+
+module.exports.revogar_acao = ($, req, res) => {
+    var url_query = req.query;
+    var Acao = $.app.models.jogo.revogar_acao(url_query.id_acao)
+    Acao.then((result) => {
+        res.redirect('/jogo?msg=B')
+    }).catch((err) => {
+        res.redirect('/jogo?msg=A')
+    })
+ }

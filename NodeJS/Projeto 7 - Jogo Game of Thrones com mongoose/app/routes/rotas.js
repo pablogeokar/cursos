@@ -40,6 +40,10 @@ module.exports = ($) => {
 		$.app.controllers.jogo.pergaminhos($, req, res)
 	})
 
+	$.get('/revogar_acao', (req, res) => {	
+		$.app.controllers.jogo.revogar_acao($, req, res)
+	})
+
 	$.post('/ordenar_acao_sudito', (req, res) => {	
 		$.app.controllers.jogo.ordenar_acao_sudito($, req, res)
 	})
